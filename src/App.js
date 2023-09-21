@@ -35,6 +35,14 @@ class App extends Component {
 
   onChangeIcon = (id) => {
     console.log(id);
+    this.setState((prevState) => ({
+      contactsList: prevState.contactsList.map((eachContact) => {
+        if (eachContact.id === id) {
+          return { ...eachContact, isFavorite: !eachContact.isFavorite };
+        }
+        return eachContact;
+      }),
+    }));
   };
 
   onAddContact = (event) => {
